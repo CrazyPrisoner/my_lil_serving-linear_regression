@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 
 
 def input_data():
-    df = pd.read_csv('/home/deka/Desktop/datasets/Dataset1_dp.csv')
+    df = pd.read_csv('/home/deka/Desktop/datasets/lil_dataset.csv')
     df.drop('dateandtime',axis=1,inplace=True)
     df.drop('Status',axis=1,inplace=True)
     df.dropna(inplace=True)
