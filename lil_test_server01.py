@@ -9,7 +9,7 @@ from tensorflow_serving.apis import predict_pb2
 from tensorflow_serving.apis import prediction_service_pb2
 
 
-tf.app.flags.DEFINE_string('server', 'localhost:6660',
+tf.app.flags.DEFINE_string('server', 'localhost:9000',
                            'inception_inference service host:port')
 FLAGS = tf.app.flags.FLAGS
 
