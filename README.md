@@ -85,9 +85,9 @@
             
  <p> Graphics, we call from linear_input_data.py </p>
  
-            ![first graph](/home/deka/Desktop/ML/Parameter_N.png " Parameter N ")
-            ![second graph](/home/deka/Desktop/ML/Parameter_EGT.png "Parameter EGT")
-            ![third graph](/home/deka/Desktop/ML/Parameter_WF.png "Parameter WF")
+![first graph](/home/deka/Desktop/ML/Parameter_N.png " Parameter N ")
+![second graph](/home/deka/Desktop/ML/Parameter_EGT.png "Parameter EGT")
+![third graph](/home/deka/Desktop/ML/Parameter_WF.png "Parameter WF")
             
             # Hyperparameters
             learning_rate = 0.01 # learning speed
