@@ -49,8 +49,9 @@
         return z, v, train_X, train_Y, test_X, test_Y
 
 
- <h2> Script to train model and save it. Run in like this : python own_model_serving01.py /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/. Need give path to save model.
- </h2>
+ <h2> Script to train model and save it.</h2>
+ <p>Run in like this : python own_model_serving01.py /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/. Need give path to save model.</p>
+ 
  
  
         from __future__ import print_function
@@ -86,7 +87,6 @@
             
  <p> Graphics, we call from linear_input_data.py . </p>
 
-![tested_model](https://user-images.githubusercontent.com/37526996/43833309-2343d2d8-9b2c-11e8-8714-137f35c6ed25.png)
 ![parameter_egt](https://user-images.githubusercontent.com/37526996/43833319-2ddab504-9b2c-11e8-9786-9a2aad1e5193.png)
 ![parameter_wf](https://user-images.githubusercontent.com/37526996/43833327-30959caa-9b2c-11e8-9d72-4add9be08ee4.png)
 ![parameter_n](https://user-images.githubusercontent.com/37526996/43833329-32138e48-9b2c-11e8-8efc-f0ed81223e66.png)
@@ -153,6 +153,8 @@
             plt.ylabel('Parameter EGT')
             plt.plot(test_Y,color='blue') # Test line
             plt.show()
+            
+![tested_model](https://user-images.githubusercontent.com/37526996/43833309-2343d2d8-9b2c-11e8-8714-137f35c6ed25.png)
 
 <p> Saving model path, version, name. Saving model builder. </p>
 
