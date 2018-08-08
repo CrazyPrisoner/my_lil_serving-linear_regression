@@ -212,3 +212,74 @@
 
         if __name__ == '__main__':
             tf.app.run()
+
+<h2> Run server. </h2>
+<p> Run server like this: ```tensorflow_model_server --port=6660 --model_name=deka --model_base_path=/home/deka/Desktop/test_tensorflow_serving/test_serving_model3/```. port="need_give_port", model_name="give_own_name_for_your_model", model_base_path="give_path_to_your_model".</p>
+
+
+<p> If you run successfully, you can see this, in your command line. </p>
+
+        2018-08-08 17:04:00.209111: I tensorflow_serving/model_servers/main.cc:153] Building single TensorFlow model file config:  model_name: deka model_base_path: /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/
+        2018-08-08 17:04:00.209486: I tensorflow_serving/model_servers/server_core.cc:459] Adding/updating models.
+        2018-08-08 17:04:00.209517: I tensorflow_serving/model_servers/server_core.cc:514]  (Re-)adding model: deka
+        2018-08-08 17:04:00.328483: I tensorflow_serving/core/basic_manager.cc:716] Successfully reserved resources to load servable {name: deka version: 16}
+        2018-08-08 17:04:00.328529: I tensorflow_serving/core/loader_harness.cc:66] Approving load for servable version {name: deka version: 16}
+        2018-08-08 17:04:00.328551: I tensorflow_serving/core/loader_harness.cc:74] Loading servable version {name: deka version: 16}
+        2018-08-08 17:04:00.328611: I external/org_tensorflow/tensorflow/contrib/session_bundle/bundle_shim.cc:360] Attempting to load native SavedModelBundle in bundle-shim from: /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/16
+        2018-08-08 17:04:00.328649: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:242] Loading SavedModel with tags: { serve }; from: /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/16
+        2018-08-08 17:04:00.477419: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:161] Restoring SavedModel bundle.
+        2018-08-08 17:04:00.675467: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:196] Running LegacyInitOp on SavedModel bundle.
+        2018-08-08 17:04:00.775900: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:291] SavedModel load for tags { serve }; Status: success. Took 447238 microseconds.
+        2018-08-08 17:04:00.776040: I tensorflow_serving/servables/tensorflow/saved_model_warmup.cc:83] No warmup data file found at /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/16/assets.extra/tf_serving_warmup_requests
+        2018-08-08 17:04:00.776328: I tensorflow_serving/core/loader_harness.cc:86] Successfully loaded servable version {name: deka version: 16}
+        2018-08-08 17:04:00.838213: I tensorflow_serving/model_servers/main.cc:323] Running ModelServer at 0.0.0.0:6660 ...
+
+<h2> Need test server. </h2>
+
+        from grpc.beta import implementations # for request
+        import tensorflow as tf
+        import numpy
+        import pandas
+
+        from tensorflow.core.framework import types_pb2
+        from tensorflow.python.platform import flags
+        from tensorflow_serving.apis import predict_pb2
+        from tensorflow_serving.apis import prediction_service_pb2
+
+
+        tf.app.flags.DEFINE_string('server', 'localhost:6660',
+                                   'inception_inference service host:port') # server port
+        FLAGS = tf.app.flags.FLAGS
+
+
+        def main(_):
+            feed_value1 = float(input(" Input value to pred : ")) # input value
+            feed_value2 = numpy.asarray(feed_value1) # convert to array
+            # Prepare request
+            request = predict_pb2.PredictRequest()
+            request.model_spec.name = 'deka' # name your model. Need to be same, because when you run it you gave name for your model --model_name=deka
+            
+            request.inputs['inputs'].dtype = types_pb2.DT_FLOAT
+            request.inputs['inputs'].float_val.append(feed_value2)
+            request.output_filter.append('outputs')
+            # Send request
+            host, port = FLAGS.server.split(':')
+            channel = implementations.insecure_channel(host, int(port))
+            stub = prediction_service_pb2.beta_create_PredictionService_stub(channel)
+            prediction = stub.Predict(request, 5.0)  # 5 secs timeout
+            predd = numpy.asarray(prediction)
+            floats = prediction.outputs['outputs'].float_val # take prediction
+            pred_array = numpy.asarray(floats) # convert prediction to numpy array
+            df = pandas.DataFrame({"predicted_value":pred_array}) # convert numpy array to pandas DataFrame
+            print(df) # Show it
+
+
+        if __name__ == '__main__':
+            tf.app.run()
+
+deka@grave:~/Desktop/test_tensorflow_serving$ python lil_test_server01.py
+
+         Input value to pred : 88.234
+                   predicted_value
+                0      1345.742554
+
