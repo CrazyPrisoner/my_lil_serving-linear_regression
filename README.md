@@ -13,7 +13,7 @@
 <p> Import data </P>
 
     def import_data():
-        dataframe = pandas.read_csv('/home/deka/Desktop/datasets/lil_dataset.csv') # import dataset the convert it to dataframe
+        dataframe = pandas.read_csv('/home/deka/Desktop/datasets/lil_dataset.csv') # path to dataset
         return dataframe
         
 <p> Information about data and visualize it </p>
