@@ -49,7 +49,8 @@
         return z, v, train_X, train_Y, test_X, test_Y
 
 
- <h2> Script to train model and save it. </h2>
+ <h2> Script to train model and save it. Run in like this : python own_model_serving01.py /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/. Need give path to save model.
+ </h2>
  
  
         from __future__ import print_function
