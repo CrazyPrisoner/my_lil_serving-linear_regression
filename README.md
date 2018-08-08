@@ -281,7 +281,7 @@
 
 <p>Run this to test server: deka@grave:~/Desktop/test_tensorflow_serving$ python lil_test_server01.py</p>
 
-         Input value to pred : 88.234
-                   predicted_value
-                0      1345.742554
+        Input value to pred : 88.234
+           predicted_value
+        0      1345.742554
 
