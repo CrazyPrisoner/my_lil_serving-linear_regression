@@ -85,10 +85,12 @@
             info_data()
             
  <p> Graphics, we call from linear_input_data.py . </p>
- 
-![first graph](/home/deka/Desktop/ML/Parameter_N.png " Parameter N "),
-![second graph](/home/deka/Desktop/ML/Parameter_EGT.png "Parameter EGT"),
-![third graph](/home/deka/Desktop/ML/Parameter_WF.png "Parameter WF").
+
+![tested_model](https://user-images.githubusercontent.com/37526996/43833309-2343d2d8-9b2c-11e8-8714-137f35c6ed25.png)
+![parameter_egt](https://user-images.githubusercontent.com/37526996/43833319-2ddab504-9b2c-11e8-9786-9a2aad1e5193.png)
+![parameter_wf](https://user-images.githubusercontent.com/37526996/43833327-30959caa-9b2c-11e8-9d72-4add9be08ee4.png)
+![parameter_n](https://user-images.githubusercontent.com/37526996/43833329-32138e48-9b2c-11e8-8efc-f0ed81223e66.png)
+
             
             
   <p> Constuct model and preapare data. </p>
