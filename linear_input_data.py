@@ -27,8 +27,8 @@ def info_data():
 def input_data():
     df = import_data()
     df.dropna(inplace=True)
-    z = df.values[:, 0]
-    v = df.values[:, 1]
+    z = df.values[:, 1]
+    v = df.values[:, 2]
     x_tr, x_te, y_tr, y_te = train_test_split(z,v,test_size=0.25)
     train_X = numpy.asarray(x_tr)
     train_Y = numpy.asarray(y_tr)
