@@ -89,12 +89,13 @@
 ![second graph](/home/deka/Desktop/ML/Parameter_EGT.png "Parameter EGT"),
 ![third graph](/home/deka/Desktop/ML/Parameter_WF.png "Parameter WF").
             
+            
+  <p> Constuct model and preapare data </p>
+  
             # Hyperparameters
             learning_rate = 0.01 # learning speed
             display_step = 50 # display cost, weights, bias
             
-            # Train model
-            print('Training model...')
             sess = tf.InteractiveSession()
             x,y,train_x,train_y,test_x,test_y = input_data() # take data from linear_input_data, linear_input_data.input_data()
             
@@ -124,6 +125,10 @@
             #  Note, minimize() knows to modify W and b because Variable objects are trainable=True by default
             optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost) # optimizer to learn
             
+  <p> Train model </p>
+            
+            # Train model
+            print('Training model...')
             for epoch in range(FLAGS.training_iteration):
                 for (x, y) in zip(train_X, train_Y):
                     sess.run(optimizer, feed_dict={X: x, Y: y}) # optimize weights and bias
@@ -135,13 +140,18 @@
                 print("Training cost=", training_cost, "W=", sess.run(W), "b=", sess.run(b), '\n')
                 predict = sess.run(pred, feed_dict={X: train_X}) # for prediction
                 print("Prediction :", predict)
-                
+            
+            
+<p> Test model </p> 
+            
             # Test our model
             predict_test = sess.run(pred, feed_dict={X: test_X}) # test prediction with test data
             plt.plot(predict_test,color='green') # Predicted line
             plt.ylabel('Parameter EGT')
             plt.plot(test_Y,color='blue') # Test line
             plt.show()
+
+<p> Save model </p>
 
             export_path_base = sys.argv[-1] # save model path
             export_path = os.path.join(
@@ -150,6 +160,9 @@
             print('Exporting trained model to', export_path)
             builder = tf.saved_model.builder.SavedModelBuilder(export_path)
             # Build the signature_def_map.
+            
+            
+<p> Creating signature map </p>
             
             regression_inputs = tf.saved_model.utils.build_tensor_info(X) # Save first_placeholder to take prediction
             regression_outputs_prediction = tf.saved_model.utils.build_tensor_info(pred) # Save predcition function
@@ -184,6 +197,8 @@
                     regression_signature,
             },
             legacy_init_op = legacy_init_op)
+
+<p> Saving model </p>
 
             builder.save()
             print("Done exporting!")
