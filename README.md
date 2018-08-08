@@ -3,20 +3,20 @@
 
 <h2> Script to visualize data and feed model. </h2>
 
-<p> Import packages </p>
+<p> Import packages. </p>
 
     import numpy # for arrays
     import pandas # for dataframe
     import matplotlib.pyplot as plt # for graphics
     from sklearn.model_selection import train_test_split # for dived data on train and test data
 
-<p> Import data </P>
+<p> Import data. </P>
 
     def import_data():
         dataframe = pandas.read_csv('/home/deka/Desktop/datasets/lil_dataset.csv') # path to dataset
         return dataframe
         
-<p> Information about data and visualize it </p>
+<p> Information about data and visualize it. </p>
  
      def info_data():
         data = import_data() # import data
@@ -34,7 +34,7 @@
         plt.ylabel('Parameter WF')
         plt.show()
         
-<p> Devide data, on train data and test data for feed model, need 2 parameters: N and EGT </p>
+<p> Devide data, on train data and test data for feed model, need 2 parameters: N and EGT. </p>
 
     def input_data():
         df = import_data() # import dataframe
@@ -83,14 +83,14 @@
             # info about our data we run it from linear_input_data, linear_input_data.info_data
             info_data()
             
- <p> Graphics, we call from linear_input_data.py </p>
+ <p> Graphics, we call from linear_input_data.py . </p>
  
 ![first graph](/home/deka/Desktop/ML/Parameter_N.png " Parameter N "),
 ![second graph](/home/deka/Desktop/ML/Parameter_EGT.png "Parameter EGT"),
 ![third graph](/home/deka/Desktop/ML/Parameter_WF.png "Parameter WF").
             
             
-  <p> Constuct model and preapare data </p>
+  <p> Constuct model and preapare data. </p>
   
             # Hyperparameters
             learning_rate = 0.01 # learning speed
@@ -125,7 +125,7 @@
             #  Note, minimize() knows to modify W and b because Variable objects are trainable=True by default
             optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost) # optimizer to learn
             
-  <p> Train model </p>
+<p> Train model. </p>
             
             # Train model
             print('Training model...')
@@ -142,7 +142,7 @@
                 print("Prediction :", predict)
             
             
-<p> Test model </p> 
+<p> Test model. Predcit vizualization. </p> 
             
             # Test our model
             predict_test = sess.run(pred, feed_dict={X: test_X}) # test prediction with test data
@@ -151,7 +151,7 @@
             plt.plot(test_Y,color='blue') # Test line
             plt.show()
 
-<p> Save model </p>
+<p> Saving model path, version, name. Saving model builder. </p>
 
             export_path_base = sys.argv[-1] # save model path
             export_path = os.path.join(
@@ -159,11 +159,13 @@
             tf.compat.as_bytes(str(16))) # folder where will be saved model
             print('Exporting trained model to', export_path)
             builder = tf.saved_model.builder.SavedModelBuilder(export_path)
+            
+            
+            
+<p> Creating signature map. </p>
+
+
             # Build the signature_def_map.
-            
-            
-<p> Creating signature map </p>
-            
             regression_inputs = tf.saved_model.utils.build_tensor_info(X) # Save first_placeholder to take prediction
             regression_outputs_prediction = tf.saved_model.utils.build_tensor_info(pred) # Save predcition function
 
@@ -198,7 +200,7 @@
             },
             legacy_init_op = legacy_init_op)
 
-<p> Saving model </p>
+<p> Saving model. </p>
 
             builder.save()
             print("Done exporting!")
