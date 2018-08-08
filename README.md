@@ -82,29 +82,40 @@
 
             # info about our data we run it from linear_input_data, linear_input_data.info_data
             info_data()
-   
-   
+            
+ <p> Graphics, we call from linear_input_data.py </p>
+ 
+            ![first graph](/home/deka/Desktop/ML/Parameter_N.png " Parameter N ")
+            ![second graph](/home/deka/Desktop/ML/Parameter_EGT.png "Parameter EGT")
+            ![third graph](/home/deka/Desktop/ML/Parameter_WF.png "Parameter WF")
+            
             # Hyperparameters
             learning_rate = 0.01 # learning speed
             display_step = 50 # display cost, weights, bias
+            
             # Train model
             print('Training model...')
             sess = tf.InteractiveSession()
             x,y,train_x,train_y,test_x,test_y = input_data() # take data from linear_input_data, linear_input_data.input_data()
+            
             # Trainin example, as requested (Issue #1)
             train_X = numpy.asarray(train_x) # for train model
             train_Y = numpy.asarray(train_y) # for train model
             n_samples = train_X.shape[0]
+            
             # Trainin example, as requested (Issue #1)
             test_X = numpy.asarray(test_x) # for test model
             test_Y = numpy.asarray(test_y) # for test model
+            
             # tf Graph Input
             X = tf.placeholder(dtype=tf.float32,name="X") # placeholder to feed model, like a input layer
             Y = tf.placeholder(dtype=tf.float32,name="Y") # output layer, supervized learning
+            
             # Set model weights
             W = tf.Variable(rng.randn(), name="weight") # weights
             b = tf.Variable(rng.randn(), name="bias") # bias
             sess.run(tf.global_variables_initializer()) # initialize all variables
+            
             # Construct a linear model
             pred = tf.add(tf.multiply(X, W), b, name="prediction") # for prediction value
             # Mean squared error
@@ -112,6 +123,7 @@
             # Gradient descent
             #  Note, minimize() knows to modify W and b because Variable objects are trainable=True by default
             optimizer = tf.train.GradientDescentOptimizer(learning_rate).minimize(cost) # optimizer to learn
+            
             for epoch in range(FLAGS.training_iteration):
                 for (x, y) in zip(train_X, train_Y):
                     sess.run(optimizer, feed_dict={X: x, Y: y}) # optimize weights and bias
@@ -123,6 +135,7 @@
                 print("Training cost=", training_cost, "W=", sess.run(W), "b=", sess.run(b), '\n')
                 predict = sess.run(pred, feed_dict={X: train_X}) # for prediction
                 print("Prediction :", predict)
+                
             # Test our model
             predict_test = sess.run(pred, feed_dict={X: test_X}) # test prediction with test data
             plt.plot(predict_test,color='green') # Predicted line
