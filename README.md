@@ -41,7 +41,7 @@
         df.dropna(inplace=True) # delete NaN values
         z = df.values[:, 1] # Parameter N
         v = df.values[:, 2] # Parameter EGT
-        x_tr, x_te, y_tr, y_te = train_test_split(z,v,test_size=0.25) divide data, 75% train data, 25% test data.
+        x_tr, x_te, y_tr, y_te = train_test_split(z,v,test_size=0.25) #divide data, 75% train data, 25% test data.
         train_X = numpy.asarray(x_tr) # convert ndarray in array
         train_Y = numpy.asarray(y_tr) # convert ndarray in array
         test_X = numpy.asarray(x_te) # convert ndarray in array
