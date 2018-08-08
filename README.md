@@ -16,7 +16,7 @@
         dataframe = pandas.read_csv('/home/deka/Desktop/datasets/lil_dataset.csv')
         return dataframe
         
-<p> Information about data and visualize it/p>
+<p> Information about data and visualize it </p>
  
      def info_data():
         data = import_data()
@@ -34,7 +34,7 @@
         plt.ylabel('Parameter WF')
         plt.show()
         
-<p> Devide data, om train data and test data for feed model, need 2 parameters: N and EGT </p>
+<p> Devide data, on train data and test data for feed model, need 2 parameters: N and EGT </p>
 
     def input_data():
         df = import_data()
