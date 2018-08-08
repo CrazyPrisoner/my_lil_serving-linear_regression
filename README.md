@@ -49,7 +49,7 @@
         return z, v, train_X, train_Y, test_X, test_Y
 
 
- <h2> Train model and save it. </h2>
+ <h2> Script to train model and save it. </h2>
  
  
         from __future__ import print_function
