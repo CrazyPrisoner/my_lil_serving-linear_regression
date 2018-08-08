@@ -180,7 +180,7 @@
             method_name=tf.saved_model.signature_constants.REGRESS_METHOD_NAME
             ))
 
-            tensor_info_x = tf.saved_model.utils.build_tensor_info(X) # Save first_placeholder to take prediction
+            tensor_info_x = tf.saved_model.utils.build_tensor_info(X) # Save first_placeholder to take vost function
             tensor_info_y = tf.saved_model.utils.build_tensor_info(cost) # Save cost function
 
             prediction_signature = (
