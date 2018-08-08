@@ -214,7 +214,9 @@
             tf.app.run()
 
 <h2> Run server. </h2>
-<p> Run server like this: ```tensorflow_model_server --port=6660 --model_name=deka --model_base_path=/home/deka/Desktop/test_tensorflow_serving/test_serving_model3/```. port="need_give_port", model_name="give_own_name_for_your_model", model_base_path="give_path_to_your_model".</p>
+<p> Run server like this: ```tensorflow_model_server --port=6660 --model_name=deka --model_base_path=/home/deka/Desktop/test_tensorflow_serving/test_serving_model3/```. </p>
+    
+<p>port="need_give_port", model_name="give_own_name_for_your_model", model_base_path="give_path_to_your_model".</p>
 
 
 <p> If you run successfully, you can see this, in your command line. </p>
@@ -277,7 +279,7 @@
         if __name__ == '__main__':
             tf.app.run()
 
-deka@grave:~/Desktop/test_tensorflow_serving$ python lil_test_server01.py
+<p>Run this to test server: deka@grave:~/Desktop/test_tensorflow_serving$ python lil_test_server01.py</p>
 
          Input value to pred : 88.234
                    predicted_value
