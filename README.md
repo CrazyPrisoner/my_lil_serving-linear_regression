@@ -1,7 +1,7 @@
 <h1> Linear Regression, Tensorflow Serving </h1>
 
 
-<h2> Script to visualize data and feed model. </h2>
+<h2> Script to visualization data and feed model. </h2>
 
 <p> Import packages. </p>
 
@@ -16,7 +16,7 @@
         dataframe = pandas.read_csv('/home/deka/Desktop/datasets/lil_dataset.csv') # path to dataset
         return dataframe
         
-<p> Information about data and visualize it. </p>
+<p> Information about data and visualization it. </p>
  
      def info_data():
         data = import_data() # import data
