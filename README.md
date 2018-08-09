@@ -107,7 +107,7 @@
             train_Y = numpy.asarray(train_y) # for train model
             n_samples = train_X.shape[0]
             
-            # Trainin example, as requested (Issue #1)
+            # Test example, as requested (Issue #2)
             test_X = numpy.asarray(test_x) # for test model
             test_Y = numpy.asarray(test_y) # for test model
             
@@ -145,7 +145,7 @@
                 print("Prediction :", predict)
             
             
-<p> Test model. Predcit vizualization. </p> 
+<p> Test model. Predict vizualization. </p> 
             
             # Test our model
             predict_test = sess.run(pred, feed_dict={X: test_X}) # test prediction with test data
