@@ -50,7 +50,7 @@
 
 
  <h2> Script to train model and save it.</h2>
- <p>Run in like this : python own_model_serving01.py /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/. Need give path to save model.</p>  i took this script from [example](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/linear_regression.py)
+ <p>Run in like this : python own_model_serving01.py /home/deka/Desktop/test_tensorflow_serving/test_serving_model3/. Need give path to save model.</p>  i took this script from [example]:(https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/2_BasicModels/linear_regression.py"")
  
  
  
